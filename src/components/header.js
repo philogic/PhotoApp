@@ -1,17 +1,15 @@
-import React, {Component} from "react";
+import React from "react";
 import {View, Text} from "react-native";
 
-export default class Header extends Component {
-  render() {
-    return (
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>
-          {this.props.title}
-        </Text>
-      </View>
-    )
-  }
-}
+const Header = props => {
+  return (
+    <View style={styles.headerContainer}>
+      <Text style={styles.headerText}>
+        {props.title}
+      </Text>
+    </View>
+  )
+};
 
 const styles = {
   headerContainer: {
@@ -28,3 +26,5 @@ const styles = {
     margin: 13
   }
 };
+
+export default Header;
