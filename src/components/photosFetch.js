@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View} from "react-native";
+import {ScrollView} from "react-native";
 import axios from "axios";
 import Photos from "./photos";
 
@@ -21,9 +21,9 @@ export default class PhotosFetch extends Component {
 
   render() {
     return (
-      <View>
+      <ScrollView>
         {this.fetchPhotos()}
-      </View>
+      </ScrollView>
     )
   }
 }
