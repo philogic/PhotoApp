@@ -1,50 +1,49 @@
-import React, {Component} from "react";
+import React from "react";
 import {View, Image, Text} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons"
 
-export default class Photos extends Component {
-  render() {
-    const {
-      container,
-      avatarContainerStyle,
-      avatarContainerTextStyle,
-      avatarStyle,
-      mainImageStyle,
-      iconContainerStyle,
-      footerStyle,
-      footerTextStyle
-    } = styles;
-    return (
-      <View style={container}>
-        <View style={avatarContainerStyle}>
-          <Image
-            source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/CandymyloveYasu.png/440px-CandymyloveYasu.png'}}
-            style={avatarStyle}
-          />
-          <View style={avatarContainerTextStyle}>
-            <Text>User</Text>
-          </View>
-        </View>
-        <View>
-          <Image
-            source={{uri: 'https://assets.hongkiat.com/uploads/yummy-instagram-accounts/2-food-instagram-accounts.jpg'}}
-            style={mainImageStyle}
-          />
-        </View>
-        <View style={iconContainerStyle}>
-          <Icon
-            name="ios-heart-outline"
-            size={30}
-          />
-        </View>
-        <View style={footerStyle}>
-          <Text style={footerTextStyle}>user</Text>
-          <Text>caption</Text>
+const Photos = ({photo}) => {
+  const {user_avatar, username, image, caption} = photo;
+  const {
+    container,
+    avatarContainerStyle,
+    avatarContainerTextStyle,
+    avatarStyle,
+    mainImageStyle,
+    iconContainerStyle,
+    footerStyle,
+    footerTextStyle
+  } = styles;
+  return (
+    <View style={container}>
+      <View style={avatarContainerStyle}>
+        <Image
+          source={{uri: user_avatar}}
+          style={avatarStyle}
+        />
+        <View style={avatarContainerTextStyle}>
+          <Text>{username}</Text>
         </View>
       </View>
-    )
-  }
-}
+      <View>
+        <Image
+          source={{uri: image}}
+          style={mainImageStyle}
+        />
+      </View>
+      <View style={iconContainerStyle}>
+        <Icon
+          name="ios-heart-outline"
+          size={30}
+        />
+      </View>
+      <View style={footerStyle}>
+        <Text style={footerTextStyle}>{username}</Text>
+        <Text>{caption}</Text>
+      </View>
+    </View>
+  )
+};
 
 const styles = {
   container: {
@@ -82,3 +81,5 @@ const styles = {
     fontWeight: "bold"
   }
 };
+
+export default Photos;
