@@ -1,16 +1,16 @@
 import React, {Component} from "react";
 import {ScrollView} from "react-native";
-import axios from "axios";
+import {connect} from "react-redux"
+import {fetchPhotos} from "../actions/PhotoActions"
 import Photos from "./photos";
 
-export default class PhotosFetch extends Component {
-  state = {photos: []};
-
+class PhotosFetch extends Component {
   componentDidMount() {
+    this.props.fetchPhotos();
   }
 
-  fetchPhotos() {
-    return this.state.photos.map(photo => {
+  displayPhotos() {
+    return this.props.photos.map(photo => {
       return <Photos key={photo.id} photo={photo}/>
     })
   }
@@ -18,8 +18,16 @@ export default class PhotosFetch extends Component {
   render() {
     return (
       <ScrollView>
-        {this.fetchPhotos()}
+        {this.displayPhotos()}
       </ScrollView>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    photos: state.photos,
+  };
+};
+
+export default connect(mapStateToProps, {fetchPhotos})(PhotosFetch);
