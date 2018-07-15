@@ -7,10 +7,6 @@ export default class PhotosFetch extends Component {
   state = {photos: []};
 
   componentDidMount() {
-    axios.get("https://rocky-fortress-49003.herokuapp.com/photos")
-      .then(response => {
-        this.setState({photos: response.data})
-      });
   }
 
   fetchPhotos() {
